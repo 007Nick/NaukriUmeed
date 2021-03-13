@@ -15,8 +15,55 @@
 		{
 			console.log("Inside On Load");
 			var applications = document.getElementById('applications');
-			applications.appendChild(createApplicationNode());
+			// applications.appendChild(createApplicationNode());
+			var profileList = document.getElementById('profileList');
+			profileList.appendChild(createProfileNode());
+			profileList.appendChild(createProfileNode());
 		}
+		function createProfileNode()
+		{
+			var newProfile = document.createElement('div');
+			newProfile.style.cssText = "display: inline;";
+			
+			var courseContainer = document.createElement('div');
+			courseContainer.setAttribute("class", "courses-container");
+			newProfile.appendChild(courseContainer);
+
+			var course = document.createElement('div');
+			course.setAttribute("class", "course");
+			courseContainer.appendChild(course);
+
+			var coursePreview = document.createElement('div');
+			coursePreview.setAttribute("class", "course-preview");
+			course.appendChild(coursePreview);
+
+			var courseInfo = document.createElement('div');
+			courseInfo.setAttribute("class", "course-info");
+			course.appendChild(courseInfo);
+
+			var designation = document.createElement('div');
+			designation.setAttribute("class", "h6Class")
+			designation.innerHTML = "Software Engineer";
+			coursePreview.appendChild(designation);
+
+			var salary = document.createElement('div');
+			salary.setAttribute("class", "h3Class")
+			salary.innerHTML = "50,000 INR";
+			coursePreview.appendChild(salary);
+
+			var profileDesc = document.createElement('div');
+			profileDesc.setAttribute("class", "h6Class")
+			profileDesc.innerHTML = "Profile Description";
+			courseInfo.appendChild(profileDesc);
+
+			var description = document.createElement('div');
+			description.setAttribute("class", "h2Class")
+			description.innerHTML = "The responsibilities include maintaining the previous software and develop new functionalities according to business needs.";
+			courseInfo.appendChild(description);
+
+			return newProfile;
+		}
+
 		function createApplicationNode()
 		{
 			var newDiv = document.createElement('div');
@@ -71,16 +118,10 @@
 			<label for="name">Experience<span>*</span></label>
 			<input id="experience" type="number" name="text" required/>
 		  </div>
-		  <!-- <div class="item">
-			<div class="name-item">
-			  <div>
-				<input type="text" name="city" placeholder="City" />
-			  </div>
-			  <div>
-				<input type="text" name="state" placeholder="State/region" />
-			  </div>
-			</div> -->
-		   <!-- </div> -->
+		  <div class="item">
+			<label for="name">Description<span>*</span></label>
+			<textarea id="description" type="text" name="text" required></textarea>
+		  </div>
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -195,9 +236,39 @@
 			</div>
 		</div>
 		
-        <!-- <button type="button" data-toggle="modal" data-target="#exampleModal">
-			Launch demo
-		  </button> -->
+		<!-- Profile Format -->
+	<div id="profileList" style="width: 100%; display: block;">
+		<!-- <div style="display: inline;">
+			<div class="courses-container">
+				<div class="course">
+					<div class="course-preview">
+						<h6>Software Engineer</h6>
+						<h3>50,000 INR</h3>
+					</div>
+					<div class="course-info">
+						<h6>Profile Description</h6>
+						<h2>The responsibilities include maintaining the previous software and develop new functionalities according to business needs.</h2>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<!-- <div style="display: inline;">
+			<div class="courses-container">
+				<div class="course">
+					<div class="course-preview">
+						<h6>Software Engineer</h6>
+						<h3>50,000 INR</h3>
+					</div>
+					<div class="course-info">
+						<h6>Profile Description</h6>
+						<h2>The responsibilities include maintaining the previous software and develop new functionalities according to business needs.</h2>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+
       </fieldset>
       </br>
 
