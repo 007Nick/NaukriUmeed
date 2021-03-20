@@ -1,5 +1,8 @@
 package com.example.naukri_umeed.Pojos;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,13 +14,9 @@ public class OrganisationInfo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @JoinColumn(columnDefinition = "user_id")
+    @JoinColumn(name = "user_id")
     @OneToOne
     private UserInfo userInfo;
-
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organisationInfo")
-    private List<Profile> profiles;
 
     @Column(name = "company_name")
     private String companyName;
@@ -33,6 +32,10 @@ public class OrganisationInfo {
 
     @Column(name = "verified")
     private boolean Verified;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organisationInfo")
+    @Fetch(FetchMode.SUBSELECT)
+    private List<Profile> profiles;
 
     public Integer getId() {
         return id;

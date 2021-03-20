@@ -1,14 +1,12 @@
 package com.example.naukri_umeed.Pojos;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user_info")
 public class UserInfo
 {
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "userInfo")
-    private OrganisationInfo organisationInfo;
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +20,9 @@ public class UserInfo
 
     @Column(name = "role")
     private Integer role;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "userInfo")
+    private OrganisationInfo organisationInfo;
 
     public Integer getId() {
         return id;
@@ -53,5 +54,14 @@ public class UserInfo
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserInfo)) return false;
+        UserInfo user = (UserInfo) o;
+        return Objects.equals(username, user.username) &&
+                Objects.equals(password, user.password);
     }
 }
